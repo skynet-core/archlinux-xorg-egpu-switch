@@ -1,0 +1,10 @@
+#!/bin/sh
+
+__egpu_enable=$(cat /sys/bus/platform/devices/asus-nb-wmi/egpu_enable)
+if [ "$__egpu_enable" -eq 1 ]; then
+    echo "EGPU-Switch: Setting dGPU as primary GPU..."
+    /usr/bin/sed -i 's|Device ".*"|Device "dGPU"|' /etc/X11/xorg.conf.d/99-screen.conf
+else 
+    echo "EGPU-Switch: Setting iGPU as primary GPU..."
+    /usr/bin/sed -i 's|Device ".*"|Device "iGPU"|' /etc/X11/xorg.conf.d/99-screen.conf
+fi

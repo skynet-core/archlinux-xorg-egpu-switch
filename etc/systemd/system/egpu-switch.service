@@ -1,0 +1,11 @@
+[Unit]
+Description=Switch between eGPU and iGPU
+Before=graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/egpu-switch
+RemainAfterExit=true
+
+[Install]
+WantedBy=graphical.target
