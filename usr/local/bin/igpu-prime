@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "EGPU-Switch: Setting iGPU as primary GPU..."
+/usr/bin/sed -i 's|Device ".*"|Device "iGPU"|' /etc/X11/xorg.conf.d/99-screen.conf
